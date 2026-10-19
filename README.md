@@ -5,16 +5,31 @@ Team: Vedant and Aarav. Roles and handoff rules are in TEAM_CONTRACT.pdf (shared
 ## Commands log
 
 ### Setup (Vedant)
+~~~
+git clone --depth=1 https://github.com/iic-jku/iic-osic-tools.git
+cd iic-osic-tools && ./start_vnc.sh
+docker exec -it -w /foss/designs/mult4-rtl2gds iic-osic-tools_xvnc_uid_1000 bash
+sak-pdk sky130A
+~~~
+
+### Part A (Aarav)
+(paste exact commands here)
+
+### Part B (Vedant)
+~~~
 iverilog -g2012 -o /dev/null rtl/full_adder.v rtl/mult_array.v
 yosys -c synth/synth.tcl
+~~~
 Gate-level simulation: pending (needs tb/tb_mult.v)
 
 ### Part C (Aarav)
 (paste exact commands here)
 
 ### Part D (Vedant)
+~~~
 cd pnr
 librelane --pdk sky130A --pdk-root /foss/pdks config.json
+~~~
 
 | Attempt | CLOCK_PERIOD (ns) | DRC | LVS | Setup slack (ns) | Result |
 |---|---|---|---|---|---|
