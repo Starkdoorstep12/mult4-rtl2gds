@@ -13,7 +13,25 @@ sak-pdk sky130A
 ~~~
 
 ### Part A (Aarav)
-(paste exact commands here)
+Inside the container, after sak-pdk sky130A:
+~~~
+iverilog -g2012 -o sim tb/tb_mult.v rtl/full_adder.v rtl/mult_array.v
+vvp sim
+~~~
+Result: PASS: 256 vectors checked, 0 errors
+
+FAIL test (temporary change, undone, never committed):
+~~~
+sed -i 's/assign sum  = a ^ b ^ cin;/assign sum  = a ^ b;/' rtl/full_adder.v
+iverilog -g2012 -o sim tb/tb_mult.v rtl/full_adder.v rtl/mult_array.v && vvp sim
+git checkout rtl/full_adder.v
+~~~
+Result: FAIL: 256 vectors checked, 95 errors (last mismatch: a=15 b=15 expected=225 got=181)
+
+Waveform (hand example A = 13, B = 7 from Vedant's roll number 2023112018, last digit 8 + 5 = 13):
+~~~
+gtkwave mult.vcd
+~~~
 
 ### Part B (Vedant)
 ~~~
