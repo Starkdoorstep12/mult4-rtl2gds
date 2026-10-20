@@ -1,6 +1,6 @@
 # 4-bit Array Multiplier: RTL to GDSII
 
-Team: Vedant and Aarav. Roles and handoff rules are in TEAM_CONTRACT.pdf (shared between us).
+Team: Vedant Tejas (2023112018) and Aarav Singla (2024122004). Roles and handoff rules are in TEAM_CONTRACT.pdf (shared between us).
 
 ## Commands log
 
