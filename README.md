@@ -30,7 +30,13 @@ vvp gls
 Result: PASS: 256 vectors checked, 0 errors (RTL and gate-level)
 
 ### Part C (Aarav)
-(paste exact commands here)
+Inside the container, after sak-pdk sky130A:
+~~~
+sta sta/sta.tcl            # T = 10 ns: worst slack max 7.21 -> Tmin = 10 - 7.21 = 2.79 ns
+T=2.79 sta sta/sta.tcl     # rerun at Tmin: worst slack max 0.00 (0.003 in the report)
+cat sta/mult_array_timing.rpt
+~~~
+Result: Tmin = 2.79 ns, Fmax = 358.4 MHz. sta/mult_array_timing.rpt is from the T = 2.79 ns run.
 
 ### Part D (Vedant)
 ~~~
