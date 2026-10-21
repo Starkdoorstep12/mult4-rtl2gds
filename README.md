@@ -1,6 +1,6 @@
 # 4-bit Array Multiplier: RTL to GDSII
 
-Team: Vedant Tejas (2023112018) and Aarav Singla (2024122004). Roles and handoff rules are in TEAM_CONTRACT.pdf (shared between us).
+Team: Vedant Tejas (2023112018) and Aarav Singla (2024122004).
 
 ## Commands log
 
@@ -57,9 +57,26 @@ cat sta/mult_array_timing.rpt
 Result: Tmin = 2.79 ns, Fmax = 358.4 MHz. sta/mult_array_timing.rpt is from the T = 2.79 ns run.
 
 ### Part D (Vedant)
+Inside the container, after sak-pdk sky130A. config.json started with CLOCK_PERIOD 10 (trial run):
 ~~~
 cd pnr
 librelane --pdk sky130A --pdk-root /foss/pdks config.json
+# attempt 1 (3.5 ns)
+sed -i 's/"CLOCK_PERIOD": 10/"CLOCK_PERIOD": 3.5/' config.json
+librelane --pdk sky130A --pdk-root /foss/pdks config.json
+# attempts 2 to 10: retry loop, +0.5 ns after each failure, stops at the first pass (8.0 ns)
+for p in 4.0 4.5 5.0 5.5 6.0 6.5 7.0 7.5 8.0 8.5 9.0; do
+  sed -i -E "s/\"CLOCK_PERIOD\": [0-9.]+/\"CLOCK_PERIOD\": $p/" config.json
+  if librelane --pdk sky130A --pdk-root /foss/pdks config.json > /foss/designs/scratch_sta/run_$p.log 2>&1; then
+    echo "$p PASS" >> /foss/designs/scratch_sta/attempts.log; break
+  else
+    echo "$p FAIL" >> /foss/designs/scratch_sta/attempts.log
+  fi
+done
+# copy the passing run's deliverables
+LAST=$(ls -d runs/RUN_* | tail -1)
+cp $LAST/final/metrics.json .
+cp $LAST/final/gds/mult_array.gds .
 ~~~
 
 | Attempt | CLOCK_PERIOD (ns) | DRC | LVS | Setup slack (ns) | Result |
