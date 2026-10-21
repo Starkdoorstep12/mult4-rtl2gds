@@ -94,3 +94,6 @@ cp $LAST/final/gds/mult_array.gds .
 | 10 | 8.0 | 0 | 0 | +0.396 | Pass: final run |
 
 Setup slack is the worst across all corners (the ss_100C_1v60 corner). Attempts 1 to 10 start from 1.2 x Tmin (Tmin = 2.79 ns, rounded up to 3.5 ns) and add 0.5 ns after each failure.
+
+### Cross-check (Vedant ran Part C)
+Inside the container, after sak-pdk sky130A: `T=10 sta sta/sta.tcl` gave worst slack max 7.21 (matches Aarav's Part C, Tmin = 2.79 ns).
