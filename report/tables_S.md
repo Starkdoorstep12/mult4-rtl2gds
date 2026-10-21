@@ -25,8 +25,8 @@
 | Wirelength | 2499 (route__wirelength; unit um, to be confirmed) |
 | Setup slack (ns) | +0.396 (worst corner, ss_100C_1v60); +4.207 at the typical corner (max_tt_025C_1v80) |
 | Post-route Fmax (MHz) | 131.5 from the worst corner; 263.6 from the typical corner |
-| Fmax from Part C (MHz) | pending Aarav's official number (Vedant's scratch run gave 358) |
+| Fmax from Part C (MHz) | 358.4 (Tmin 2.79 ns, typical corner) |
 | DRC errors | 0 (Magic 0, KLayout 0) |
 | LVS errors | 0 |
 
-Cell count check: 1883 = 62 logic cells + 1552 decap/fill + 245 tap + 21 repair buffers + 3 clock buffers.
+Cell count check: 1883 = 62 original-design cells (16 flip-flops + 46 logic cells; synthesis gave 16 + 45) + 1552 decap/fill + 245 tap + 21 repair buffers + 3 clock buffers.
