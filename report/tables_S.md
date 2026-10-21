@@ -22,7 +22,7 @@
 | Cells after synthesis | 61 |
 | Cells after place and route | 1883 |
 | Kinds of cells added | decap (1298), fill (254), tap (245), timing-repair buffers (21), clock buffers (3) |
-| Wirelength | 2499 (route__wirelength; unit um, to be confirmed) |
+| Wirelength | 2499 um (detailed routing log; met1 1153, met2 1284, met3 61) |
 | Setup slack (ns) | +0.396 (worst corner, ss_100C_1v60); +4.207 at the typical corner (max_tt_025C_1v80) |
 | Post-route Fmax (MHz) | 131.5 from the worst corner; 263.6 from the typical corner |
 | Fmax from Part C (MHz) | 358.4 (Tmin 2.79 ns, typical corner) |
