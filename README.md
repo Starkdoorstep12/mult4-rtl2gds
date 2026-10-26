@@ -107,3 +107,5 @@ gtkwave mult.vcd
 klayout pnr/mult_array.gds
 ~~~
 The first iverilog command regenerates mult.vcd for the waveform; the waveform window was set to 4300 to 4350 ns. In KLayout, all layers were hidden except 65/20 to 72/20 (diffusion, poly, li1, met1 to met5), so the cell-name text labels are not drawn. The whole die and a zoomed view were captured with Win+Shift+S and cropped. The marker lines and labels on the waveform were added afterwards with an image-editing script, and the block diagram was generated with a Python (matplotlib) script. The report is written in LaTeX and compiled with pdflatex to report/report.pdf.
+
+Note on pnr/metrics.json: route__drc_errors__iter:0 is 7 because the router's first iteration found 7 violations. Iteration 1 fixed them. The final route__drc_errors is 0, magic__drc_error__count is 0, klayout__drc_error__count is 0, and all design__lvs_* counts are 0.
