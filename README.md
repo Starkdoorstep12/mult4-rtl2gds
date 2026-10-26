@@ -97,3 +97,13 @@ Setup slack is the worst across all corners (the ss_100C_1v60 corner). Attempts 
 
 ### Cross-check (Vedant ran Part C)
 Inside the container, after sak-pdk sky130A: `T=10 sta sta/sta.tcl` gave worst slack max 7.21 (matches Aarav's Part C, Tmin = 2.79 ns).
+
+### Part D screenshots and report (Vedant)
+~~~
+sudo apt install -y klayout
+cd ~/eda/designs/mult4-rtl2gds
+iverilog -g2012 -o sim tb/tb_mult.v rtl/full_adder.v rtl/mult_array.v && vvp sim
+gtkwave mult.vcd
+klayout pnr/mult_array.gds
+~~~
+The first iverilog command regenerates mult.vcd for the waveform; the waveform window was set to 4300 to 4350 ns. In KLayout, all layers were hidden except 65/20 to 72/20 (diffusion, poly, li1, met1 to met5), so the cell-name text labels are not drawn. The whole die and a zoomed view were captured with Win+Shift+S and cropped. The marker lines and labels on the waveform were added afterwards with an image-editing script, and the block diagram was generated with a Python (matplotlib) script. The report is written in LaTeX and compiled with pdflatex to report/report.pdf.
